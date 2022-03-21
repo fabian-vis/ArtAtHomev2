@@ -4,6 +4,15 @@ const request = require('request')
 const app = express()
 const port = 3000
 
+require('dotenv').config({
+    path: '.env-dev'
+})
+
+const {
+    API_KEY
+} = process.env
+
+
 // Link the templating engine to the express app
 app.set('view engine', 'ejs');
 
@@ -16,7 +25,7 @@ app.use(express.static('public'));
 // Create a home route
 app.get('/', (req, res) => {
     // Send a plain string using res.send();
-    request('https://www.rijksmuseum.nl/api/nl/collection?key=8op6V3T9', {
+    request(`https://www.rijksmuseum.nl/api/nl/collection?key=${API_KEY}`, {
         json: true
     }, (err, requestRes, json) => {
         if (err) {
