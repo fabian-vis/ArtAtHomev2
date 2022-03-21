@@ -11,8 +11,5 @@ routie({
     '': (id) => {
         /* ------------------------------------------------API data fetchen */
         getData(url)
-    },
-    ':id': (id) => {
-        getData(id)
-    },
+    }
 })

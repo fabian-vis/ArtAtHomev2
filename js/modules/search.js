@@ -10,9 +10,7 @@ import {
 
 /* ------------------------------------------------search function */
 export function search(searchBar) {
-    let searchTerm = searchBar.value;
-    let url = "https://www.rijksmuseum.nl/api/nl/collection?key=8op6V3T9&q=" + searchTerm + "&ps=5"
-    getData(url)
+    getData()
 }
 
 /* ------------------------------------------------Kruis icoon toevoegen aan de inputbar */
@@ -31,6 +29,10 @@ searchIcon.addEventListener("click", () => {
     getData(url)
 })
 /* ------------------------------------------------Wanneer er getypt wordt in de input word de search functie uitgevoerd */
-searchBar.addEventListener("keyup", (e) => {
-    search(searchBar)
-});
+
+searchBar.addEventListener("keydown", (e) => {
+    // ONLY SEARCHING IF ENTER IS PRESSED
+    if (e.code === "Enter") {
+        search()
+    }
+})
