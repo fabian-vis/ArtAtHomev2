@@ -1,14 +1,39 @@
-const http = require('http');
-
 const hostname = '127.0.0.1';
-const port = 3000;
+const express = require('express')
+const request = require('request')
+const app = express()
+const port = 3000
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World');
+// Link the templating engine to the express app
+app.set('view engine', 'ejs');
+
+// Tell the views engine/ejs where the template files are stored (Settingname, value)
+app.set('views', 'views');
+
+// Tell express to use a 'static' folder
+app.use(express.static('public'));
+
+// Create a home route
+app.get('/', (req, res) => {
+    // Send a plain string using res.send();
+    request('https://www.rijksmuseum.nl/api/nl/collection?key=8op6V3T9', {
+        json: true
+    }, (err, requestRes, json) => {
+        if (err) {
+            // We got an error
+            res.send(err);
+        } else {
+            // console.log(json)
+            // Render the page using the 'posts' view and our body data
+            res.render('index', {
+                pageTitle: 'Art Museum', // We use this for the page title, see views/partials/head.ejs
+                data: json.artObjects
+            });
+        }
+    });
 });
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
+
+app.listen(port, () => {
+    console.log(`Ai we live at http://${hostname}:${port}/`);
+})
