@@ -28,21 +28,25 @@ app.get('/', (req, res) => {
             res.render('index', {
                 pageTitle: 'ArtAtHomev2', // We use this for the page title, see views/partials/head.ejs
                 data: artWorks.artObjects
-            });
+            })
         })
+        .catch(err => res.send(err))
 })
+
 
 // detail page
 app.get('/kunst/:id', (req, res) => {
     fetch(`https://www.rijksmuseum.nl/api/nl/collection?key=${API_KEY}`)
         .then(async response => {
             const artWorks = await response.json()
+            const result = artWorks.artObjects.filter((item) => item.id === req.params.id)
             res.render('detail', {
-                pageTitle: `Post ${req.params.id}`,
-                data: artWorks.artObjects
-            });
+                pageTitle: `Kunstwerk: ${req.params.id}`,
+                data: result
+            })
         })
-});
+        .catch(err => res.send(err))
+})
 
 app.listen(port, () => {
     console.log(`Ai we live at http://${hostname}:${port}/`);

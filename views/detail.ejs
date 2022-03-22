@@ -6,14 +6,15 @@
     <h1>ArtAtHome</h1>
 </div>
 <main>
-    <section>
+    <section class="detail">
         <% data.map((kunst) => {
-            console.log(kunst.id)
             const img = kunst.webImage.url.slice(0, -3) + "=s1000"
         %>
+        <a href="../">Terug</a>
         <p><%= kunst.title %></p>
+        <p><%= kunst.principalOrFirstMaker %></p>
+        <img src="<%= img %>">
         <% }) %>
-
     </section>
 </main>
 <%- include('./partials/foot') %>
