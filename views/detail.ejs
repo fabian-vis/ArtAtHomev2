@@ -1,0 +1,19 @@
+<%- include('./partials/head') %>
+<header>
+    <!--Background image-->
+</header>
+<div>
+    <h1>ArtAtHome</h1>
+</div>
+<main>
+    <section>
+        <% data.map((kunst) => {
+            console.log(kunst.id)
+            const img = kunst.webImage.url.slice(0, -3) + "=s1000"
+        %>
+        <p><%= kunst.title %></p>
+        <% }) %>
+
+    </section>
+</main>
+<%- include('./partials/foot') %>
