@@ -32,6 +32,7 @@ app.get('/', (req, res) => {
         })
 })
 
+// detail page
 app.get('/kunst/:id', (req, res) => {
     fetch(`https://www.rijksmuseum.nl/api/nl/collection?key=${API_KEY}`)
         .then(async response => {
