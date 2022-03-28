@@ -6,17 +6,17 @@
     <h1>ArtAtHome</h1>
 </div>
 <main>
-    <section class="input">
+    <form method="get" action="/search" class="input">
         <img class="search-icon" src="img/zoekicoontje.png" alt="Zoekicoon">
-        <input placeholder="Zoek op schilderij of artiest" type="text">
+        <input type="search" name="query" placeholder="Zoek op schilderij of artiest">
         <img class="kruisje" src="img/cross.png" alt="kruis">
-    </section>
+    </form>
     <section class="content">
         <% data.map((kunst) => {
                 const img = kunst.webImage.url.slice(0, -3)+"=s1000"
                     %>
         <article>
-            <a href="kunst/<%= kunst.id %>">
+            <a href="kunst/<%= kunst.id.substring(3) %>">
                 <p><%= kunst.title %></p>
                 <p><%= kunst.principalOrFirstMaker %></p>
                 <img src="<%= img %>">

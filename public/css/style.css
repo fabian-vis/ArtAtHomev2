@@ -262,6 +262,7 @@ body > div > h1{
 .detail img {
   width: 50%;
   height: auto;
+  margin-bottom: 2em;
 }
 
 .detail p:first-of-type {
