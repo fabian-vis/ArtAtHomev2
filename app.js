@@ -63,7 +63,7 @@ app.get('/search', (req, res) => {
 
 app.get('/offline', (req, res) => {
     res.render('offline', {
-        pageTitle: 'Art Museum offline'
+        pageTitle: 'Art Museum Offline'
     });
 })
 
