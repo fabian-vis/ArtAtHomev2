@@ -61,6 +61,11 @@ app.get('/search', (req, res) => {
         .catch((err) => res.send(err));
 })
 
+app.get('/offline', (req, res) => {
+    res.render('offline', {
+        pageTitle: 'Art Museum offline'
+    });
+})
 
 app.listen(port, () => {
     console.log(`Ai we live at http://${hostname}:${port}/`);
