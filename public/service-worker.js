@@ -1,8 +1,10 @@
 const CORE_CACHE_VERSION = 'v1'
 const CORE_ASSETS = [
     '/offline',
-    '../css/style.css',
-    'manifest.json'
+    '/css/style.css',
+    'manifest.json',
+    '/img/Rijks.jpeg',
+    '/img/zoekicoontje.png'
 ]
 
 self.addEventListener('install', event => {
@@ -28,7 +30,8 @@ self.addEventListener('fetch', (event) => {
             caches.open(CORE_CACHE_VERSION)
             .then(cache => cache.match(event.request.url))
         )
-    } else if (isHtmlGetRequest(event.request)) {
+    }
+    if (isHtmlGetRequest(event.request)) {
         console.log('html get request', event.request.url)
         // generic fallback
         event.respondWith(
