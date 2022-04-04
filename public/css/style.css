@@ -303,3 +303,14 @@ body > div > h1{
   height: auto;
 }
 }
+
+h4 {
+  position: absolute;
+  color: white;
+  font-size: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
