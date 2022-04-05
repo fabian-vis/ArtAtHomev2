@@ -3,6 +3,7 @@ const express = require('express')
 const fetch = require('node-fetch')
 const app = express()
 const port = 3000
+const compression = require('compression')
 let artLength = '10';
 
 require('dotenv').config({
@@ -12,6 +13,13 @@ require('dotenv').config({
 const {
     API_KEY
 } = process.env
+
+app.use(compression())
+
+app.use(function (req, res, next) {
+    res.set('Cache-control', 'public, max-age=365000000')
+    next();
+})
 
 // Link the templating engine to the express app
 app.set('view engine', 'ejs');

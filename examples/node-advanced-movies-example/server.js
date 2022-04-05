@@ -17,6 +17,7 @@ app.use(/.*-[0-9a-f]{10}\..*/, (req, res, next) => {
 
 app.use(express.static('static'))
 
+
 app.set('view engine', 'ejs');
 // Tell the views engine/ejs where the template files are stored (Settingname, value)
 app.set('views', 'views');
@@ -48,9 +49,9 @@ app.get('/offline', (req, res) => {
 
 app.get('/movies/:id', (req, res) => {
   Promise.all([
-    fetch(`https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${process.env.MOVIEDB_TOKEN}`).then(response => response.json()),
-    fetch(`https://api.themoviedb.org/3/movie/${req.params.id}/videos?api_key=${process.env.MOVIEDB_TOKEN}`).then(response => response.json())
-  ])
+      fetch(`https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${process.env.MOVIEDB_TOKEN}`).then(response => response.json()),
+      fetch(`https://api.themoviedb.org/3/movie/${req.params.id}/videos?api_key=${process.env.MOVIEDB_TOKEN}`).then(response => response.json())
+    ])
     .then(([details, videos]) => {
       res.render('detail', {
         title: details.original_title,
@@ -74,7 +75,10 @@ app.get('/search', (req, res) => {
       }
 
       if (req.query.async) {
-        res.render('partials/result-list', { query: req.query.query, results: movieData.results })
+        res.render('partials/result-list', {
+          query: req.query.query,
+          results: movieData.results
+        })
       } else {
         res.render('results', templateData);
       }

@@ -1,25 +1,24 @@
 <%- include('./partials/head') %>
-<header>
-    <!--Background image-->
-</header>
 <div>
     <h1>ArtAtHome</h1>
 </div>
 <main>
     <form method="get" action="/search" class="input">
-        <img class="search-icon" src="img/zoekicoontje.png" alt="Zoekicoon">
         <input type="search" name="query" placeholder="Zoek op schilderij of artiest">
-        <img class="kruisje" src="img/cross.png" alt="kruis">
     </form>
     <section class="content">
         <% data.map((kunst) => {
-                const img = kunst.webImage.url.slice(0, -3)+"=s1000"
+                const img1000 = kunst.webImage.url.slice(0, -3)+"=s1000"
+                const img750 = kunst.webImage.url.slice(0, -3)+"=s750"
+                const img500 = kunst.webImage.url.slice(0, -3)+"=s500"
                     %>
         <article>
             <a href="kunst/<%= kunst.id.substring(3) %>">
                 <p><%= kunst.title %></p>
                 <p><%= kunst.principalOrFirstMaker %></p>
-                <img src="<%= img %>">
+                <img srcset="<%= img1000 %> 1000w,
+                <%= img750 %> 750w,
+                <%= img500 %> 500w" alt="foto van een schilderij">
             </a>
         </article>
         <% }) %>
