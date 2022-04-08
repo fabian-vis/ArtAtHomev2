@@ -39,6 +39,20 @@ Als het dus de eerste keer is dat er een service worker geinstalleerd word, word
 Als er al een service worker geinstalleerd staat, word de nieuwe versie gedownload maar nog niet geactiveerd. Deze fase heet waiting. Hij word
 pas geactiveerd op het het moment dat er geen page reloaded zijn die op de oude service worker runnen.
 
+In het geval van mijn applicatie zorgt de service worker ervoor dat bestanden gecached worden zodat het die in offline bekeken kunnen worden.
+Als de gebruiker iets gezocht heeft met de searchbar wordt die ook opgeslagen waardoor die offline ook gebruikt kunnen worden.
+
+```js
+const CORE_CACHE_VERSION = "v1";
+const CORE_ASSETS = [
+  "/offline",
+  "/css/style.css",
+  "manifest.json",
+  "/img/Rijks.jpeg",
+  "/img/zoekicoontje.png",
+];
+```
+
 ### Client-side vs Serverside rendering
 
 **Clientside**
