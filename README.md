@@ -8,7 +8,7 @@ Welkom bij mijn project van de minor Webdesign and development. Het doel van dit
 
 ### Voorbeeld
 
-![Voorbeeld](/img/voorbeeldweb.png)
+![Voorbeeld](public/img/voorbeeldweb.png)
 
 ### Proces
 
@@ -16,7 +16,7 @@ Welkom bij mijn project van de minor Webdesign and development. Het doel van dit
 
 ### Activitydiagram
 
-![Activitydiagram](/img/activitydiagramserverside.png)
+![Activitydiagram](public/img/activitydiagramserverside.png)
 
 ### Service worker
 
